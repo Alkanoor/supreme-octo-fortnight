@@ -53,7 +53,12 @@ bool ProcessRequest::process(TCPServer::Cnx& cnx, const std::string& request, st
         {
             std::ostringstream oss;
             factory->printByName(line,oss);
-            response = "OK "+oss.str();
+            std::string toSendModified = oss.str();
+            for(unsigned int i=0;i<toSendModified.size();i++)
+                if(toSendModified[i]=='\n')
+                    toSendModified[i] = '\x01';
+
+            response = "OK resourcePrinted "+toSendModified;
         }
         else
             response = "OK noResourceFound";
