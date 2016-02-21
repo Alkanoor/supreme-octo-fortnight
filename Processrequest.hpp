@@ -5,6 +5,8 @@
 #include "TCPServer.h"
 #include "Factory.hpp"
 
+#include <sstream>
+
 
 class ProcessRequest
 {

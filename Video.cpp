@@ -23,7 +23,7 @@ std::ostream& Video::print(std::ostream& oss) const
 
 void Video::execute() const
 {
-    system(("mpv "+path+"/"+name+" &").c_str());
+    return (void)system(("mpv "+path+"/"+name+" &").c_str());
 }
 
 void Video::setDelay(int delay)

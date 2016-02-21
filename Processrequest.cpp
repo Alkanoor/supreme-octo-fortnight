@@ -1,29 +1,33 @@
-#include "processrequest.hpp"
+#include "Processrequest.hpp"
 
 
 ProcessRequest::ProcessRequest(const std::shared_ptr<Factory>& factory) :
     factory(factory)
 {}
 
-bool ProcessRequest::process(TCPServer::Cnx& cnx, const string& request, string& response)
+bool ProcessRequest::process(TCPServer::Cnx& cnx, const std::string& request, std::string& response)
 {
     if(!factory)
     {
         response = "NOK internalError";
-        return;
+        return false;
     }
 
-    std::istreamstring iss(request);
+    std::istringstream iss(request);
     std::string cmd;
     iss>>cmd;
 
+    std::string tmp;
+    std::getline(iss,tmp);
+
     std::string line;
-    std::getline(iss,line);
+    for(unsigned int i=1;i<tmp.size();i++)
+        line.push_back(tmp[i]);
 
     //Data processing and actions depend on the command entered
     if(cmd=="search")
     {
-        std::shared_ptr<Multimedia> resource = factory->search(line);
+        std::shared_ptr<Multimedia> resource = factory->searchByName(line);
         if(resource)
             response = "OK resourceFound";
         else
@@ -31,7 +35,7 @@ bool ProcessRequest::process(TCPServer::Cnx& cnx, const string& request, string&
     }
     else if(cmd=="play")
     {
-        std::shared_ptr<Multimedia> resource = factory->search(line);
+        std::shared_ptr<Multimedia> resource = factory->searchByName(line);
         //We check if resource is available first (before playing it)
         if(resource)
         {
@@ -43,7 +47,7 @@ bool ProcessRequest::process(TCPServer::Cnx& cnx, const string& request, string&
     }
     else if(cmd=="print")
     {
-        std::shared_ptr<Multimedia> resource = factory->search(line);
+        std::shared_ptr<Multimedia> resource = factory->searchByName(line);
         //We check if resource is available first (before printing it)
         if(resource)
         {
@@ -61,8 +65,9 @@ bool ProcessRequest::process(TCPServer::Cnx& cnx, const string& request, string&
             response = "OK destructionOK";
         else
             response = "OK destructionNOK";
-        TCPServer::Lock lock(cnx, false);
     }
     else
         response = "NOK badCommand";
+
+    return true;
 }

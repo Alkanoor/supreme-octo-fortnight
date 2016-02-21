@@ -1,10 +1,10 @@
 #include "Processrequest.hpp"
+#include <vector>
+
+const int DEFAULT_PORT = 3331;
 
 
-const int DEFAULT_PORT = 33331;
-
-
-int main()
+int main(int argc, char* argv[])
 {
     std::vector<std::shared_ptr<Multimedia> > multimediaElements;
 
@@ -19,18 +19,18 @@ int main()
     {
         multimediaPool->addMultimedia("Film1\n\r",tmp); //should fail because of forbidden chars \r and \n
     }
-    catch(std::exception& e)
+    catch(std::string& e)
     {
-        std::cout<<"Test exception (should be printed if it works) : "<<e.what()<<std::endl;
+        std::cout<<"Test exception (should be printed if it works) : "<<e<<std::endl;
     }
     multimediaPool->addMultimedia("Film1",tmp);
     try
     {
         multimediaPool->addMultimedia("Film1",tmp); //should fail because Film1 already exists in factory
     }
-    catch(std::exception& e)
+    catch(std::string& e)
     {
-        std::cout<<"Test exception (should be printed if it works) : "<<e.what()<<std::endl;
+        std::cout<<"Test exception (should be printed if it works) : "<<e<<std::endl;
     }
     tmpGroup->push_back(tmp);
     tmp = std::shared_ptr<Multimedia>(new Video("video1.3gp","../data",1200));
@@ -50,7 +50,7 @@ int main()
 
     std::shared_ptr<TCPServer> server(new TCPServer());
     ProcessRequest process(multimediaPool);
-    server->setCallback(&process, &ProcessRequest::processRequest);
+    server->setCallback(&process, &ProcessRequest::process);
 
     int port = (argc>=2) ? atoi(argv[1]) : DEFAULT_PORT;
     std::cout<<"Starting server on port "<<port<<std::endl;

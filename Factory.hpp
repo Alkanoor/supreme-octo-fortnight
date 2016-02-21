@@ -31,7 +31,7 @@ class Factory
         ///Print an object by its name, either if it's in map of multimedia objects or in map of group objects///
         void printByName(const std::string& name);
         ///Print an object by its name in argument ofstream, either if it's in map of multimedia objects or in map of group objects///
-        void printByName(const std::string& name, std::ofstream& stream);
+        void printByName(const std::string& name, std::ostream& stream);
         ///Call the execute method an object identified by its name, either if it's in map of multimedia objects or in map of group objects///
         void play(const std::string& name);
 

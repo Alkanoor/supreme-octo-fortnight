@@ -71,7 +71,12 @@ std::shared_ptr<Multimedia> Factory::searchByName(const std::string& name)
     if(it != multimediaObjects.end())
         return it->second;
     else
-        return std::shared_ptr<Multimedia>();
+    {
+        auto it2 = groupObjects.find(name);
+        if(it2 != groupObjects.end())
+            return it2->second;
+    }
+    return std::shared_ptr<Multimedia>();
 }
 
 void Factory::printByName(const std::string& name)
@@ -84,7 +89,7 @@ void Factory::printByName(const std::string& name)
         std::cout<<*(it2->second);
 }
 
-void Factory::printByName(const std::string& name, std::ofstream& ofs)
+void Factory::printByName(const std::string& name, std::ostream& ofs)
 {
     auto it1 = multimediaObjects.find(name);
     if(it1 != multimediaObjects.end())
@@ -123,17 +128,17 @@ void Factory::throwIfBadName(const std::string& name)
 {
     for(unsigned int i=0;i<name.size();i++)
         if(name[i]<32||name[i]>127)
-            throw std::exception("Bad char in name");
+            throw std::string("Bad char in name");
 }
 
 void Factory::throwIfNameExistsInMultimedia(const std::string& name)
 {
     if(multimediaObjects.count(name))
-        throw std::exception("Multimedia object existing");
+        throw std::string("Multimedia object existing");
 }
 
 void Factory::throwIfNameExistsInGroups(const std::string& name)
 {
     if(groupObjects.count(name))
-        throw std::exception("Group existing");
+        throw std::string("Group existing");
 }
