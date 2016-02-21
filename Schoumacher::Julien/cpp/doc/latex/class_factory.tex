@@ -1,0 +1,63 @@
+\hypertarget{class_factory}{\section{Factory Class Reference}
+\label{class_factory}\index{Factory@{Factory}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_factory_ae6742d502be528d8ed9372dc1971f872}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ {\bfseries create\-Film} (const std\-::string \&path, const std\-::string \&name)}\label{class_factory_ae6742d502be528d8ed9372dc1971f872}
+
+\item 
+\hypertarget{class_factory_ad5e2fe94c0d667d895b91f15f66910d2}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ {\bfseries create\-Video} (const std\-::string \&path, const std\-::string \&name)}\label{class_factory_ad5e2fe94c0d667d895b91f15f66910d2}
+
+\item 
+\hypertarget{class_factory_a6f422e72bec7bcdaac528b1a14609ff5}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ {\bfseries create\-Photo} (const std\-::string \&path, const std\-::string \&name)}\label{class_factory_a6f422e72bec7bcdaac528b1a14609ff5}
+
+\item 
+\hypertarget{class_factory_ae44fed6cd7f54edbded7d01f3a761d73}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ {\bfseries create\-Group} (const std\-::string \&name)}\label{class_factory_ae44fed6cd7f54edbded7d01f3a761d73}
+
+\item 
+\hypertarget{class_factory_aa94aa2b2e3127c5298209f201c4e356f}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ {\bfseries create\-Group} (const std\-::string \&name, const std\-::list$<$ std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ $>$ \&l)}\label{class_factory_aa94aa2b2e3127c5298209f201c4e356f}
+
+\item 
+\hypertarget{class_factory_a55d75bb11685bd4f921fe8a014b3f0a5}{void \hyperlink{class_factory_a55d75bb11685bd4f921fe8a014b3f0a5}{add\-Multimedia} (const std\-::string \&name, std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ multimedia)}\label{class_factory_a55d75bb11685bd4f921fe8a014b3f0a5}
+
+\begin{DoxyCompactList}\small\item\em Add multimedia object (can be a group) inside the name referenced map of multimedia objects. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_a21b79ba789374d4ab5c44dcfb4c1542f}{void \hyperlink{class_factory_a21b79ba789374d4ab5c44dcfb4c1542f}{add\-Multimedia\-Group} (const std\-::string \&name, std\-::shared\-\_\-ptr$<$ \hyperlink{class_group}{Group}$<$ \hyperlink{class_multimedia}{Multimedia} $>$ $>$ multimedia)}\label{class_factory_a21b79ba789374d4ab5c44dcfb4c1542f}
+
+\begin{DoxyCompactList}\small\item\em Add group of multimedia object inside the name referenced map of group objects. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_ad0553a33a3e6bd24614b0d645f7906e4}{bool \hyperlink{class_factory_ad0553a33a3e6bd24614b0d645f7906e4}{delete\-By\-Name} (const std\-::string \&name)}\label{class_factory_ad0553a33a3e6bd24614b0d645f7906e4}
+
+\begin{DoxyCompactList}\small\item\em Delete an object by its name, either if it's in map of multimedia objects or in map of group objects. Return true if some objects have been found and deleted. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_a1e9f22828141fcb6e4f06ba8d93325f7}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_multimedia}{Multimedia} $>$ \hyperlink{class_factory_a1e9f22828141fcb6e4f06ba8d93325f7}{search\-By\-Name} (const std\-::string \&name)}\label{class_factory_a1e9f22828141fcb6e4f06ba8d93325f7}
+
+\begin{DoxyCompactList}\small\item\em Search an object by its name, only if it's in map of multimedia objects. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_a4c9ab55f5a833bfcb687405181936df7}{void \hyperlink{class_factory_a4c9ab55f5a833bfcb687405181936df7}{print\-By\-Name} (const std\-::string \&name)}\label{class_factory_a4c9ab55f5a833bfcb687405181936df7}
+
+\begin{DoxyCompactList}\small\item\em Print an object by its name, either if it's in map of multimedia objects or in map of group objects. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_a3be1c89ec4c2b21f3fc9b0913228ee01}{void \hyperlink{class_factory_a3be1c89ec4c2b21f3fc9b0913228ee01}{print\-By\-Name} (const std\-::string \&name, std\-::ostream \&stream)}\label{class_factory_a3be1c89ec4c2b21f3fc9b0913228ee01}
+
+\begin{DoxyCompactList}\small\item\em Print an object by its name in argument ostream, either if it's in map of multimedia objects or in map of group objects. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_ae08ccdd647ca3503d389f97dad8ad72d}{void \hyperlink{class_factory_ae08ccdd647ca3503d389f97dad8ad72d}{play} (const std\-::string \&name)}\label{class_factory_ae08ccdd647ca3503d389f97dad8ad72d}
+
+\begin{DoxyCompactList}\small\item\em Call the execute method an object identified by its name, either if it's in map of multimedia objects or in map of group objects. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_ad520fe27ab831b5a1879ac5944ac457f}{std\-::ostream \& {\bfseries operator$<$$<$} (std\-::ostream \&oss) const }\label{class_factory_ad520fe27ab831b5a1879ac5944ac457f}
+
+\item 
+\hypertarget{class_factory_a2dc9d7912b475d5a1ff1a7655c762e5f}{std\-::ostream \& {\bfseries print} (std\-::ostream \&oss) const }\label{class_factory_a2dc9d7912b475d5a1ff1a7655c762e5f}
+
+\item 
+\hypertarget{class_factory_a6a83203ab543cb798a82bd95f774c9a3}{void \hyperlink{class_factory_a6a83203ab543cb798a82bd95f774c9a3}{throw\-If\-Bad\-Name} (const std\-::string \&name)}\label{class_factory_a6a83203ab543cb798a82bd95f774c9a3}
+
+\begin{DoxyCompactList}\small\item\em Create exception in case of bad name (ascii$<$32 or ascii$>$127 for at least 1 char in the name) \end{DoxyCompactList}\item 
+\hypertarget{class_factory_a83303191fff07dbf7f8ce4d532b2d901}{void \hyperlink{class_factory_a83303191fff07dbf7f8ce4d532b2d901}{throw\-If\-Name\-Exists\-In\-Multimedia} (const std\-::string \&name)}\label{class_factory_a83303191fff07dbf7f8ce4d532b2d901}
+
+\begin{DoxyCompactList}\small\item\em Create exception in case of existing multimedia object. \end{DoxyCompactList}\item 
+\hypertarget{class_factory_abdeccb8a1d76a56892347b01210a3388}{void \hyperlink{class_factory_abdeccb8a1d76a56892347b01210a3388}{throw\-If\-Name\-Exists\-In\-Groups} (const std\-::string \&name)}\label{class_factory_abdeccb8a1d76a56892347b01210a3388}
+
+\begin{DoxyCompactList}\small\item\em Create exception in case of existing group object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Factory.\-hpp\item 
+Factory.\-cpp\end{DoxyCompactItemize}

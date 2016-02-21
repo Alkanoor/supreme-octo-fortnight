@@ -1,0 +1,177 @@
+\hypertarget{class_socket_buffer}{\section{Socket\-Buffer Class Reference}
+\label{class_socket_buffer}\index{Socket\-Buffer@{Socket\-Buffer}}
+}
+
+
+Class for exchanging text strings between T\-C\-P/\-I\-P sockets. T\-C\-P/\-I\-P connected sockets do not preserve record boundaries. Messages can be split or merged so that one call to \hyperlink{class_socket_a9275eacdb64056a53cf4b9cf54cd2f1a}{Socket\-::send()} on the sending side does not necessarily correspond to one call to \hyperlink{class_socket_aa5e98b6f2c4e26fcf90d71c8386fc09d}{Socket\-::receive()} on the receiving side.  
+
+
+
+
+{\ttfamily \#include $<$Socket.\-h$>$}
+
+Inheritance diagram for Socket\-Buffer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_socket_buffer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket_buffer_aa9ed1cc8e166f53606b31246838b3d87}{\hyperlink{class_socket_buffer_aa9ed1cc8e166f53606b31246838b3d87}{Socket\-Buffer} (\hyperlink{class_socket}{Socket} $\ast$socket, size\-\_\-t input\-Buffer\-Size=8192, size\-\_\-t ouput\-Buffer\-Size=8192)}\label{class_socket_buffer_aa9ed1cc8e166f53606b31246838b3d87}
+
+\begin{DoxyCompactList}\small\item\em constructor. The argument must be a valid connected T\-C\-P/\-I\-P \hyperlink{class_socket}{Socket} (i.\-e. of S\-O\-C\-K\-\_\-\-S\-T\-R\-E\-A\-M type) that must N\-O\-T be destructed while this \hyperlink{class_socket_buffer}{Socket\-Buffer} is used. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_buffer_a40ad003b90446f69fb0fa4cc18c0d28b}{{\bfseries Socket\-Buffer} (\hyperlink{class_socket}{Socket} \&socket, size\-\_\-t input\-Buffer\-Size=8192, size\-\_\-t ouput\-Buffer\-Size=8192)}\label{class_socket_buffer_a40ad003b90446f69fb0fa4cc18c0d28b}
+
+\item 
+\hypertarget{class_socket_buffer_aa9c14ec14e092fc58c4363d2bbc20ffd}{\hyperlink{class_socket}{Socket} $\ast$ {\bfseries socket} ()}\label{class_socket_buffer_aa9c14ec14e092fc58c4363d2bbc20ffd}
+
+\item 
+virtual void \hyperlink{class_socket_buffer_ac03353a864ab3a04aa25364a333c0a09}{set\-Separators} (int input\-Separator, int output\-Separator)
+\begin{DoxyCompactList}\small\item\em changes the Line Separators. the argument is a character or a negative value (see below)\-: \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_socket_buffer_a81a280c639a913b5dbfb12611f339232}{get\-Separators} (int \&input\-Separator, int \&output\-Separator) const 
+\begin{DoxyCompactList}\small\item\em returns the Line Separators. \end{DoxyCompactList}\item 
+virtual ssize\-\_\-t \hyperlink{class_socket_buffer_a279a372ca946b58455dba0e9c12e213d}{read\-Line} (std\-::string \&str)
+\begin{DoxyCompactList}\small\item\em Reads a line of text from a connected socket. The text is stored in the string given as an argument. The other side must send a line of text ended by a Line Separator (. \end{DoxyCompactList}\item 
+virtual ssize\-\_\-t \hyperlink{class_socket_buffer_af589c1459da6bca39badf56798c6f859}{write\-Line} (const std\-::string \&str)
+\begin{DoxyCompactList}\small\item\em Sends a line of text to a connected socket. Sends the string given as an argument. A Line Separator is automatically added (. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_buffer_ab77a4365cfb9625dc996005ffa22bc0c}{virtual ssize\-\_\-t {\bfseries read} (char $\ast$buffer, size\-\_\-t len)}\label{class_socket_buffer_ab77a4365cfb9625dc996005ffa22bc0c}
+
+\item 
+\hypertarget{class_socket_buffer_a2ceb624ffd27a27ef500574646c9a8fa}{virtual ssize\-\_\-t {\bfseries write} (const char $\ast$str, size\-\_\-t len)}\label{class_socket_buffer_a2ceb624ffd27a27ef500574646c9a8fa}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket_buffer_ab2f6ba1d14564967e1714ddd478275d8}{virtual bool {\bfseries retrieve\-Line} (std\-::string \&str, ssize\-\_\-t received)}\label{class_socket_buffer_ab2f6ba1d14564967e1714ddd478275d8}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket_buffer_a19f587689e24a3900a4157be5fa27205}{size\-\_\-t {\bfseries \-\_\-in\-Size}}\label{class_socket_buffer_a19f587689e24a3900a4157be5fa27205}
+
+\item 
+\hypertarget{class_socket_buffer_a1ce4a460af7a7fb2f3609bcb9f15ece7}{size\-\_\-t {\bfseries \-\_\-out\-Size}}\label{class_socket_buffer_a1ce4a460af7a7fb2f3609bcb9f15ece7}
+
+\item 
+\hypertarget{class_socket_buffer_a8958b13b28d476081c10aac8e25a87d2}{int {\bfseries \-\_\-in\-Sep}}\label{class_socket_buffer_a8958b13b28d476081c10aac8e25a87d2}
+
+\item 
+\hypertarget{class_socket_buffer_add088335eb098a067980157b310b22cb}{int {\bfseries \-\_\-out\-Sep}}\label{class_socket_buffer_add088335eb098a067980157b310b22cb}
+
+\item 
+\hypertarget{class_socket_buffer_a8575c3a91db81fac18e5634c427faafb}{\hyperlink{class_socket}{Socket} $\ast$ {\bfseries \-\_\-sock}}\label{class_socket_buffer_a8575c3a91db81fac18e5634c427faafb}
+
+\item 
+\hypertarget{class_socket_buffer_a8cf67350de772512eff4af7d7f378bed}{struct \hyperlink{struct_input_buffer}{Input\-Buffer} $\ast$ {\bfseries \-\_\-in}}\label{class_socket_buffer_a8cf67350de772512eff4af7d7f378bed}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class for exchanging text strings between T\-C\-P/\-I\-P sockets. T\-C\-P/\-I\-P connected sockets do not preserve record boundaries. Messages can be split or merged so that one call to \hyperlink{class_socket_a9275eacdb64056a53cf4b9cf54cd2f1a}{Socket\-::send()} on the sending side does not necessarily correspond to one call to \hyperlink{class_socket_aa5e98b6f2c4e26fcf90d71c8386fc09d}{Socket\-::receive()} on the receiving side. 
+
+The methods of this class solve this problem\-:
+\begin{DoxyItemize}
+\item by calling \hyperlink{class_socket_a9275eacdb64056a53cf4b9cf54cd2f1a}{Socket\-::send()} or \hyperlink{class_socket_aa5e98b6f2c4e26fcf90d71c8386fc09d}{Socket\-::receive()} as many times as needed
+\item by using a Line Separator to separate text lines (\begin{DoxySeeAlso}{See Also}
+set\-Separator()) 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\hypertarget{class_socket_buffer_a81a280c639a913b5dbfb12611f339232}{\index{Socket\-Buffer@{Socket\-Buffer}!get\-Separators@{get\-Separators}}
+\index{get\-Separators@{get\-Separators}!SocketBuffer@{Socket\-Buffer}}
+\subsubsection[{get\-Separators}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\-Buffer\-::get\-Separators (
+\begin{DoxyParamCaption}
+\item[{int \&}]{input\-Separator, }
+\item[{int \&}]{output\-Separator}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_socket_buffer_a81a280c639a913b5dbfb12611f339232}
+
+
+returns the Line Separators. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{class_socket_buffer_ac03353a864ab3a04aa25364a333c0a09}{set\-Separators()}. 
+\end{DoxySeeAlso}
+\hypertarget{class_socket_buffer_a279a372ca946b58455dba0e9c12e213d}{\index{Socket\-Buffer@{Socket\-Buffer}!read\-Line@{read\-Line}}
+\index{read\-Line@{read\-Line}!SocketBuffer@{Socket\-Buffer}}
+\subsubsection[{read\-Line}]{\setlength{\rightskip}{0pt plus 5cm}ssize\-\_\-t Socket\-Buffer\-::read\-Line (
+\begin{DoxyParamCaption}
+\item[{std\-::string \&}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_socket_buffer_a279a372ca946b58455dba0e9c12e213d}
+
+
+Reads a line of text from a connected socket. The text is stored in the string given as an argument. The other side must send a line of text ended by a Line Separator (. 
+
+\begin{DoxySeeAlso}{See Also}
+set\-Separator()) which is automatically done by \hyperlink{class_socket_buffer_af589c1459da6bca39badf56798c6f859}{write\-Line()}. The separator is not stored in the argument. 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+the number of bytes that was received (including the separator) except if\-:
+\begin{DoxyItemize}
+\item shutdown\-Output() was called on the other side (0 is returned)
+\item an error occured (Socket\-::\-Failed is returned)
+\item the socket is invalid (Socket\-::\-Invalid\-Socket is returned) 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+this method may block. 
+\end{DoxyNote}
+\hypertarget{class_socket_buffer_ac03353a864ab3a04aa25364a333c0a09}{\index{Socket\-Buffer@{Socket\-Buffer}!set\-Separators@{set\-Separators}}
+\index{set\-Separators@{set\-Separators}!SocketBuffer@{Socket\-Buffer}}
+\subsubsection[{set\-Separators}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\-Buffer\-::set\-Separators (
+\begin{DoxyParamCaption}
+\item[{int}]{input\-Separator, }
+\item[{int}]{output\-Separator}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_socket_buffer_ac03353a864ab3a04aa25364a333c0a09}
+
+
+changes the Line Separators. the argument is a character or a negative value (see below)\-: 
+
+
+\begin{DoxyItemize}
+\item if {\itshape input\-Separator} is $<$ 0 (the default) a line is considered to be terminated by any one of '\par
+' or '' or '\par
+' followed by ''
+\item if {\itshape output\-Separator} is $<$ 0 a line is terminated by '\par
+' followed by ''. The default value is '\par
+'. 
+\end{DoxyItemize}\hypertarget{class_socket_buffer_af589c1459da6bca39badf56798c6f859}{\index{Socket\-Buffer@{Socket\-Buffer}!write\-Line@{write\-Line}}
+\index{write\-Line@{write\-Line}!SocketBuffer@{Socket\-Buffer}}
+\subsubsection[{write\-Line}]{\setlength{\rightskip}{0pt plus 5cm}ssize\-\_\-t Socket\-Buffer\-::write\-Line (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_socket_buffer_af589c1459da6bca39badf56798c6f859}
+
+
+Sends a line of text to a connected socket. Sends the string given as an argument. A Line Separator is automatically added (. 
+
+\begin{DoxySeeAlso}{See Also}
+set\-Separator()). 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+the number of bytes that was sent (including the separator) except if\-:
+\begin{DoxyItemize}
+\item shutdown\-Input() was called on the other side (0 is returned)
+\item an error occured (Socket\-::\-Failed is returned)
+\item the socket is invalid (Socket\-::\-Invalid\-Socket is returned) 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+this method may block. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Socket.\-h\item 
+Socket.\-cpp\end{DoxyCompactItemize}

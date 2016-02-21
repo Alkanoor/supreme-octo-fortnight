@@ -1,0 +1,27 @@
+\hypertarget{class_t_c_p_server_1_1_lock}{\section{T\-C\-P\-Server\-:\-:Lock Class Reference}
+\label{class_t_c_p_server_1_1_lock}\index{T\-C\-P\-Server\-::\-Lock@{T\-C\-P\-Server\-::\-Lock}}
+}
+
+
+locks the server in read mode or in write mode. In order to avoid concurrency problems between threads, the callback method that processes requests should instantiate a \hyperlink{class_t_c_p_server_1_1_lock}{Lock} object in the stack. The \hyperlink{class_t_c_p_server_1_1_lock}{Lock} must be instantiated in write mode if the request changes data, or in read mode otherwise. A write lock blocks all other locks (hence, all other threads) until the callback method that issued the write lock returns.  
+
+
+
+
+{\ttfamily \#include $<$T\-C\-P\-Server.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_p_server_1_1_lock_a4b1fa591dde407aacd93133828cfac81}{\hyperlink{class_t_c_p_server_1_1_lock_a4b1fa591dde407aacd93133828cfac81}{Lock} (\hyperlink{class_t_c_p_server_1_1_cnx}{Cnx} \&, bool write\-Mode=false)}\label{class_t_c_p_server_1_1_lock_a4b1fa591dde407aacd93133828cfac81}
+
+\begin{DoxyCompactList}\small\item\em locks the connection in write mode if the second argument is true and in read mode otherwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+locks the server in read mode or in write mode. In order to avoid concurrency problems between threads, the callback method that processes requests should instantiate a \hyperlink{class_t_c_p_server_1_1_lock}{Lock} object in the stack. The \hyperlink{class_t_c_p_server_1_1_lock}{Lock} must be instantiated in write mode if the request changes data, or in read mode otherwise. A write lock blocks all other locks (hence, all other threads) until the callback method that issued the write lock returns. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+T\-C\-P\-Server.\-h\item 
+T\-C\-P\-Server.\-cpp\end{DoxyCompactItemize}

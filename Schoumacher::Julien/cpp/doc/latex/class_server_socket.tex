@@ -1,0 +1,92 @@
+\hypertarget{class_server_socket}{\section{Server\-Socket Class Reference}
+\label{class_server_socket}\index{Server\-Socket@{Server\-Socket}}
+}
+
+
+T\-C\-P/\-I\-P \hyperlink{class_socket}{Socket} Server. This class encapsulates a T\-C\-P/\-I\-P socket server. A\-F\-\_\-\-I\-N\-E\-T connections following the I\-Pv4 Internet protocol are supported.  
+
+
+
+
+{\ttfamily \#include $<$Socket.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_server_socket_a2b3098589541243241ca25495155186c}{\hyperlink{class_server_socket_a2b3098589541243241ca25495155186c}{Server\-Socket} ()}\label{class_server_socket_a2b3098589541243241ca25495155186c}
+
+\begin{DoxyCompactList}\small\item\em Creates a new server socket. Creates a listening socket that waits for connection requests by T\-C\-P/\-I\-P clients. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_socket}{Socket} $\ast$ \hyperlink{class_server_socket_accc3d56d42aa50a5f3c920cf0b26959b}{accept} ()
+\begin{DoxyCompactList}\small\item\em Accepts a new connection request and returns the corresponding socket. By default, this function blocks the caller until a connection is present. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_server_socket_ad5281fe6c005bca007a9a758bd612481}{bind} (int port, int backlog=50)
+\begin{DoxyCompactList}\small\item\em Assigns the socket to the local address. The socket must be bound before using it. \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_a3eac6d5571bb092622d328dbda2de2cf}{virtual int \hyperlink{class_server_socket_a3eac6d5571bb092622d328dbda2de2cf}{close} ()}\label{class_server_socket_a3eac6d5571bb092622d328dbda2de2cf}
+
+\begin{DoxyCompactList}\small\item\em Closes the socket. \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_ad5b053b711f97cfe8b56f6febc15df65}{bool \hyperlink{class_server_socket_ad5b053b711f97cfe8b56f6febc15df65}{is\-Closed} () const }\label{class_server_socket_ad5b053b711f97cfe8b56f6febc15df65}
+
+\begin{DoxyCompactList}\small\item\em Returns true if the socket has been closed. \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_a57b5b84a60906153d9755190cdfd0d39}{int \hyperlink{class_server_socket_a57b5b84a60906153d9755190cdfd0d39}{descriptor} ()}\label{class_server_socket_a57b5b84a60906153d9755190cdfd0d39}
+
+\begin{DoxyCompactList}\small\item\em Returns the Unix descriptor of the socket. \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_ab34154bc6114c638ae02f5e018121099}{int \hyperlink{class_server_socket_ab34154bc6114c638ae02f5e018121099}{set\-Receive\-Buffer\-Size} (int size)}\label{class_server_socket_ab34154bc6114c638ae02f5e018121099}
+
+\begin{DoxyCompactList}\small\item\em Sets the S\-O\-\_\-\-R\-C\-V\-B\-U\-F option to the specified value. \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_ae60d7cc31ad535e5d3cac42e38b8ec98}{int \hyperlink{class_server_socket_ae60d7cc31ad535e5d3cac42e38b8ec98}{set\-Reuse\-Address} (bool)}\label{class_server_socket_ae60d7cc31ad535e5d3cac42e38b8ec98}
+
+\begin{DoxyCompactList}\small\item\em Enables/disables the S\-O\-\_\-\-R\-E\-U\-S\-E\-A\-D\-D\-R socket option. \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_aedb9144c9c375fcb14ac47bcb9d2eb17}{int \hyperlink{class_server_socket_aedb9144c9c375fcb14ac47bcb9d2eb17}{set\-So\-Timeout} (int timeout)}\label{class_server_socket_aedb9144c9c375fcb14ac47bcb9d2eb17}
+
+\begin{DoxyCompactList}\small\item\em Enables/disables S\-O\-\_\-\-T\-I\-M\-E\-O\-U\-T with the specified timeout (in milliseconds). \end{DoxyCompactList}\item 
+\hypertarget{class_server_socket_a9e5e1ee852ba26156c757a0086b780fe}{int \hyperlink{class_server_socket_a9e5e1ee852ba26156c757a0086b780fe}{set\-Tcp\-No\-Delay} (bool)}\label{class_server_socket_a9e5e1ee852ba26156c757a0086b780fe}
+
+\begin{DoxyCompactList}\small\item\em Turns on/off T\-C\-P coalescence (useful in some cases to avoid delays). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\-C\-P/\-I\-P \hyperlink{class_socket}{Socket} Server. This class encapsulates a T\-C\-P/\-I\-P socket server. A\-F\-\_\-\-I\-N\-E\-T connections following the I\-Pv4 Internet protocol are supported. 
+
+Class \hyperlink{class_socket}{Socket} should be used on the client side (\begin{DoxySeeAlso}{See Also}
+\hyperlink{class_socket}{Socket}).
+\end{DoxySeeAlso}
+T\-C\-P/\-I\-P sockets do not preserve record boundaries, \begin{DoxySeeAlso}{See Also}
+\hyperlink{class_socket_buffer}{Socket\-Buffer} for a solution. 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_server_socket_accc3d56d42aa50a5f3c920cf0b26959b}{\index{Server\-Socket@{Server\-Socket}!accept@{accept}}
+\index{accept@{accept}!ServerSocket@{Server\-Socket}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Socket} $\ast$ Server\-Socket\-::accept (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_server_socket_accc3d56d42aa50a5f3c920cf0b26959b}
+
+
+Accepts a new connection request and returns the corresponding socket. By default, this function blocks the caller until a connection is present. 
+
+\begin{DoxyReturn}{Returns}
+the new \hyperlink{class_socket}{Socket} or nullptr on error. 
+\end{DoxyReturn}
+\hypertarget{class_server_socket_ad5281fe6c005bca007a9a758bd612481}{\index{Server\-Socket@{Server\-Socket}!bind@{bind}}
+\index{bind@{bind}!ServerSocket@{Server\-Socket}}
+\subsubsection[{bind}]{\setlength{\rightskip}{0pt plus 5cm}int Server\-Socket\-::bind (
+\begin{DoxyParamCaption}
+\item[{int}]{port, }
+\item[{int}]{backlog = {\ttfamily 50}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_server_socket_ad5281fe6c005bca007a9a758bd612481}
+
+
+Assigns the socket to the local address. The socket must be bound before using it. 
+
+\begin{DoxyReturn}{Returns}
+0 on success or a negative value on error which is one of \hyperlink{class_socket_a9f68308228badcdd299cd83e62e36976}{Socket\-::\-Errors} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Socket.\-h\item 
+Socket.\-cpp\end{DoxyCompactItemize}

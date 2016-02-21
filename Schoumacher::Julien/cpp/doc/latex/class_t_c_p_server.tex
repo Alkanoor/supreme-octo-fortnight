@@ -1,0 +1,108 @@
+\hypertarget{class_t_c_p_server}{\section{T\-C\-P\-Server Class Reference}
+\label{class_t_c_p_server}\index{T\-C\-P\-Server@{T\-C\-P\-Server}}
+}
+
+
+T\-C\-P/\-I\-P I\-Pv4 server. The server supports T\-C\-P/\-I\-P A\-F\-\_\-\-I\-N\-E\-T connections (following the I\-Pv4 Internet protocol) with multiple clients. One thread is used per client.  
+
+
+
+
+{\ttfamily \#include $<$T\-C\-P\-Server.\-h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_t_c_p_server_1_1_callback}{Callback}
+\item 
+class \hyperlink{class_t_c_p_server_1_1_callback_impl}{Callback\-Impl}
+\item 
+class \hyperlink{class_t_c_p_server_1_1_cnx}{Cnx}
+\begin{DoxyCompactList}\small\item\em represents a connection with a given client. \end{DoxyCompactList}\item 
+class \hyperlink{class_t_c_p_server_1_1_lock}{Lock}
+\begin{DoxyCompactList}\small\item\em locks the server in read mode or in write mode. In order to avoid concurrency problems between threads, the callback method that processes requests should instantiate a \hyperlink{class_t_c_p_server_1_1_lock}{Lock} object in the stack. The \hyperlink{class_t_c_p_server_1_1_lock}{Lock} must be instantiated in write mode if the request changes data, or in read mode otherwise. A write lock blocks all other locks (hence, all other threads) until the callback method that issued the write lock returns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_p_server_a3a5e3cfe42c676ed71f2bc58dcc92bda}{\hyperlink{class_t_c_p_server_a3a5e3cfe42c676ed71f2bc58dcc92bda}{T\-C\-P\-Server} ()}\label{class_t_c_p_server_a3a5e3cfe42c676ed71f2bc58dcc92bda}
+
+\begin{DoxyCompactList}\small\item\em constructor\-: initializes the \hyperlink{class_t_c_p_server}{T\-C\-P\-Server}. \end{DoxyCompactList}\item 
+\hypertarget{class_t_c_p_server_abc497ac52355e53986a6a1bd1acb9581}{virtual \hyperlink{class_t_c_p_server_abc497ac52355e53986a6a1bd1acb9581}{$\sim$\-T\-C\-P\-Server} ()}\label{class_t_c_p_server_abc497ac52355e53986a6a1bd1acb9581}
+
+\begin{DoxyCompactList}\small\item\em destructor\-: cleans up the \hyperlink{class_t_c_p_server}{T\-C\-P\-Server}. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_t_c_p_server_a1409041961e91f1dbc4933483b4c3b23}{run} (int port)
+\begin{DoxyCompactList}\small\item\em starts the main loop of the server on this port. This function binds an internal \hyperlink{class_server_socket}{Server\-Socket} then starts an infinite main loop that receives requests from clients. The function creates one thread per client. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\void \hyperlink{class_t_c_p_server_ac62c8c7a1d1137b74e2a1fa6d8a4a876}{set\-Callback} (T $\ast$obj, bool(T\-::$\ast$func)(\hyperlink{class_t_c_p_server_1_1_cnx}{Cnx} \&, const std\-::string \&request, std\-::string \&response))
+\begin{DoxyCompactList}\small\item\em changes the callback method that processes requests. The first argument must be an object, the second argument a method of this object. This method will be called each time the \hyperlink{class_t_c_p_server}{T\-C\-P\-Server} receives a 'request' from a client in order to perform a computation and return a 'response' to this client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_p_server_af99977f3ec05210e91d02aa9c693254b}{virtual void \hyperlink{class_t_c_p_server_af99977f3ec05210e91d02aa9c693254b}{read\-Messages} (\hyperlink{class_t_c_p_server_1_1_cnx}{T\-C\-P\-Server\-::\-Cnx} $\ast$)}\label{class_t_c_p_server_af99977f3ec05210e91d02aa9c693254b}
+
+\begin{DoxyCompactList}\small\item\em reads messages from a given client on the corresponding thread. \end{DoxyCompactList}\item 
+\hypertarget{class_t_c_p_server_a2f053dfc720aab308f97ccc8a789adc4}{virtual void \hyperlink{class_t_c_p_server_a2f053dfc720aab308f97ccc8a789adc4}{print\-Msg} (const std\-::string \&msg, const \hyperlink{class_t_c_p_server_1_1_cnx}{T\-C\-P\-Server\-::\-Cnx} $\ast$=0)}\label{class_t_c_p_server_a2f053dfc720aab308f97ccc8a789adc4}
+
+\begin{DoxyCompactList}\small\item\em prints warning and error messages on the terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_p_server_a9c2891cf40b19735bceb22605a5e867e}{\hyperlink{class_server_socket}{Server\-Socket} {\bfseries \-\_\-servsock}}\label{class_t_c_p_server_a9c2891cf40b19735bceb22605a5e867e}
+
+\item 
+\hypertarget{class_t_c_p_server_a1f7a87b1f42950325d005c8a0ca9427e}{std\-::shared\-\_\-ptr$<$ \hyperlink{class_t_c_p_server_1_1_callback}{Callback} $>$ {\bfseries \-\_\-callback}}\label{class_t_c_p_server_a1f7a87b1f42950325d005c8a0ca9427e}
+
+\item 
+\hypertarget{class_t_c_p_server_a130152438b313a1c4470c842a063257d}{pthread\-\_\-rwlock\-\_\-t {\bfseries \-\_\-threadlock}}\label{class_t_c_p_server_a130152438b313a1c4470c842a063257d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\-C\-P/\-I\-P I\-Pv4 server. The server supports T\-C\-P/\-I\-P A\-F\-\_\-\-I\-N\-E\-T connections (following the I\-Pv4 Internet protocol) with multiple clients. One thread is used per client. 
+
+The \hyperlink{class_t_c_p_server_a1409041961e91f1dbc4933483b4c3b23}{run()} method binds an internal \hyperlink{class_server_socket}{Server\-Socket} then starts an infinite main loop that receives requests from clients. Requests can be received concurrently thanks to threads.
+
+A callback method is called each time the sever receives a request from a client (\begin{DoxySeeAlso}{See Also}
+\hyperlink{class_t_c_p_server_ac62c8c7a1d1137b74e2a1fa6d8a4a876}{set\-Callback()} to set this method). This method can issue read and write locks to avoid concurrency issues (
+
+\hyperlink{class_t_c_p_server_1_1_lock}{Lock}). 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_t_c_p_server_a1409041961e91f1dbc4933483b4c3b23}{\index{T\-C\-P\-Server@{T\-C\-P\-Server}!run@{run}}
+\index{run@{run}!TCPServer@{T\-C\-P\-Server}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}int T\-C\-P\-Server\-::run (
+\begin{DoxyParamCaption}
+\item[{int}]{port}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_t_c_p_server_a1409041961e91f1dbc4933483b4c3b23}
+
+
+starts the main loop of the server on this port. This function binds an internal \hyperlink{class_server_socket}{Server\-Socket} then starts an infinite main loop that receives requests from clients. The function creates one thread per client. 
+
+\begin{DoxyReturn}{Returns}
+0 on normal termination or a negative value if the \hyperlink{class_server_socket}{Server\-Socket} could not be bound (value is then one of \hyperlink{class_socket_a9f68308228badcdd299cd83e62e36976}{Socket\-::\-Errors}). 
+\end{DoxyReturn}
+\hypertarget{class_t_c_p_server_ac62c8c7a1d1137b74e2a1fa6d8a4a876}{\index{T\-C\-P\-Server@{T\-C\-P\-Server}!set\-Callback@{set\-Callback}}
+\index{set\-Callback@{set\-Callback}!TCPServer@{T\-C\-P\-Server}}
+\subsubsection[{set\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void T\-C\-P\-Server\-::set\-Callback (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{obj, }
+\item[{bool(T\-::$\ast$)({\bf Cnx} \&, const std\-::string \&request, std\-::string \&response)}]{func}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_t_c_p_server_ac62c8c7a1d1137b74e2a1fa6d8a4a876}
+
+
+changes the callback method that processes requests. The first argument must be an object, the second argument a method of this object. This method will be called each time the \hyperlink{class_t_c_p_server}{T\-C\-P\-Server} receives a 'request' from a client in order to perform a computation and return a 'response' to this client. 
+
+Arguments and return value of the method\-:
+\begin{DoxyItemize}
+\item the 'request' and the 'response' are provided through the corresponding parameters of the method.
+\item the connection with the client will be closed if the method returns false 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+T\-C\-P\-Server.\-h\item 
+T\-C\-P\-Server.\-cpp\end{DoxyCompactItemize}

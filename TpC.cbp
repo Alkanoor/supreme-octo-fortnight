@@ -43,6 +43,12 @@
 		<Unit filename="Multimedia.hpp" />
 		<Unit filename="Photo.cpp" />
 		<Unit filename="Photo.hpp" />
+		<Unit filename="Processrequest.cpp" />
+		<Unit filename="Processrequest.hpp" />
+		<Unit filename="Socket.cpp" />
+		<Unit filename="Socket.h" />
+		<Unit filename="TCPServer.cpp" />
+		<Unit filename="TCPServer.h" />
 		<Unit filename="Video.cpp" />
 		<Unit filename="Video.hpp" />
 		<Unit filename="main.cpp" />
