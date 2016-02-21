@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+
+<valgrindoutput>
+
+<protocolversion>4</protocolversion>
+<protocoltool>memcheck</protocoltool>
+
+<preamble>
+  <line>Memcheck, a memory error detector</line>
+  <line>Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.</line>
+  <line>Using Valgrind-3.10.0 and LibVEX; rerun with -h for copyright info</line>
+  <line>Command: /cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</line>
+</preamble>
+
+<pid>5183</pid>
+<ppid>4728</ppid>
+<tool>memcheck</tool>
+
+<args>
+  <vargv>
+    <exe>/usr/bin/valgrind.bin</exe>
+    <arg>--leak-check=full</arg>
+    <arg>--track-origins=yes</arg>
+    <arg>--xml=yes</arg>
+    <arg>--xml-file=/cal/homes/jschoumacher/workspace/inf224/TpC/ValgrindOut.xml</arg>
+  </vargv>
+  <argv>
+    <exe>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</exe>
+  </argv>
+</args>
+
+<status>
+  <state>RUNNING</state>
+  <time>00:00:00:00.065 </time>
+</status>
+
+<error>
+  <unique>0x0</unique>
+  <tid>1</tid>
+  <kind>UninitCondition</kind>
+  <what>Conditional jump or move depends on uninitialised value(s)</what>
+  <stack>
+    <frame>
+      <ip>0x401A8D</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x401B40</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x40116F</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+  <auxwhat>Uninitialised value was created by a heap allocation</auxwhat>
+  <stack>
+    <frame>
+      <ip>0x4C29180</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>operator new(unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x401151</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+</error>
+
+<error>
+  <unique>0x1</unique>
+  <tid>1</tid>
+  <kind>UninitCondition</kind>
+  <what>Conditional jump or move depends on uninitialised value(s)</what>
+  <stack>
+    <frame>
+      <ip>0x401A8D</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x401BF1</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x401206</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+  <auxwhat>Uninitialised value was created by a heap allocation</auxwhat>
+  <stack>
+    <frame>
+      <ip>0x4C29180</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>operator new(unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x4011F8</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+</error>
+
+<error>
+  <unique>0x2</unique>
+  <tid>1</tid>
+  <kind>UninitCondition</kind>
+  <what>Conditional jump or move depends on uninitialised value(s)</what>
+  <stack>
+    <frame>
+      <ip>0x401A8D</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x401B40</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x40128E</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+  <auxwhat>Uninitialised value was created by a heap allocation</auxwhat>
+  <stack>
+    <frame>
+      <ip>0x4C29180</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>operator new(unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x401270</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+</error>
+
+<error>
+  <unique>0x3</unique>
+  <tid>1</tid>
+  <kind>UninitCondition</kind>
+  <what>Conditional jump or move depends on uninitialised value(s)</what>
+  <stack>
+    <frame>
+      <ip>0x401A8D</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x401BF1</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x4012DD</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+  <auxwhat>Uninitialised value was created by a heap allocation</auxwhat>
+  <stack>
+    <frame>
+      <ip>0x4C29180</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>operator new(unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x4012CF</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+</error>
+
+
+<status>
+  <state>FINISHED</state>
+  <time>00:00:00:00.619 </time>
+</status>
+
+<error>
+  <unique>0x7</unique>
+  <tid>1</tid>
+  <kind>Leak_DefinitelyLost</kind>
+  <xwhat>
+    <text>345 (48 direct, 297 indirect) bytes in 1 blocks are definitely lost in loss record 4 of 4</text>
+    <leakedbytes>345</leakedbytes>
+    <leakedblocks>1</leakedblocks>
+  </xwhat>
+  <stack>
+    <frame>
+      <ip>0x4C29180</ip>
+      <obj>/usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</obj>
+      <fn>operator new(unsigned long)</fn>
+    </frame>
+    <frame>
+      <ip>0x401270</ip>
+      <obj>/cal/homes/jschoumacher/workspace/inf224/TpC/bin/Release/TpC</obj>
+    </frame>
+    <frame>
+      <ip>0x5678B44</ip>
+      <obj>/lib/x86_64-linux-gnu/libc-2.19.so</obj>
+      <fn>(below main)</fn>
+      <dir>/build/glibc-I9DIZl/glibc-2.19/csu</dir>
+      <file>libc-start.c</file>
+      <line>287</line>
+    </frame>
+  </stack>
+</error>
+
+<errorcounts>
+  <pair>
+    <count>1</count>
+    <unique>0x3</unique>
+  </pair>
+  <pair>
+    <count>1</count>
+    <unique>0x2</unique>
+  </pair>
+  <pair>
+    <count>1</count>
+    <unique>0x1</unique>
+  </pair>
+  <pair>
+    <count>1</count>
+    <unique>0x0</unique>
+  </pair>
+</errorcounts>
+
+<suppcounts>
+</suppcounts>
+
+</valgrindoutput>
+

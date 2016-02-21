@@ -1,0 +1,114 @@
+# depslib dependency file v1.0
+1453217095 source:/cal/homes/jschoumacher/workspace/inf224/TpC/main.cpp
+	<iostream>
+	<vector>
+	"Photo.hpp"
+	"Group.hpp"
+	"Film.hpp"
+
+1450190690 /cal/homes/jschoumacher/workspace/inf224/TpC/include/Multimedia.hpp
+	<ostream>
+	<string>
+
+1450190690 source:/cal/homes/jschoumacher/workspace/inf224/TpC/src/Multimedia.cpp
+	"Multimedia.hpp"
+
+1450186996 /cal/homes/jschoumacher/workspace/inf224/TpC/include/Photo.hpp
+	<cstdlib>
+	"Multimedia.hpp"
+
+1450187168 source:/cal/homes/jschoumacher/workspace/inf224/TpC/src/Photo.cpp
+	"Photo.hpp"
+
+1450189713 source:/cal/homes/jschoumacher/workspace/inf224/TpC/src/Video.cpp
+	"Video.hpp"
+
+1450191165 /cal/homes/jschoumacher/workspace/inf224/TpC/include/Video.hpp
+	<cstdlib>
+	"Multimedia.hpp"
+
+1450190628 source:/cal/homes/jschoumacher/workspace/inf224/TpC/src/Film.cpp
+	"Film.hpp"
+
+1450192179 /cal/homes/jschoumacher/workspace/inf224/TpC/include/Film.hpp
+	"Video.hpp"
+
+1452008801 /cal/homes/jschoumacher/workspace/inf224/TpC/Photo.hpp
+	<cstdlib>
+	"Multimedia.hpp"
+
+1452008804 /cal/homes/jschoumacher/workspace/inf224/TpC/Multimedia.hpp
+	<ostream>
+	<string>
+
+1453217034 /cal/homes/jschoumacher/workspace/inf224/TpC/Film.hpp
+	"Video.hpp"
+
+1450191165 /cal/homes/jschoumacher/workspace/inf224/TpC/Video.hpp
+	<cstdlib>
+	"Multimedia.hpp"
+
+1453217150 source:/cal/homes/jschoumacher/workspace/inf224/TpC/Film.cpp
+	"Film.hpp"
+
+1452008803 source:/cal/homes/jschoumacher/workspace/inf224/TpC/Photo.cpp
+	"Photo.hpp"
+
+1453216846 source:/cal/homes/jschoumacher/workspace/inf224/TpC/Video.cpp
+	"Video.hpp"
+
+1452008804 source:/cal/homes/jschoumacher/workspace/inf224/TpC/Multimedia.cpp
+	"Multimedia.hpp"
+
+1453215434 /cal/homes/jschoumacher/workspace/inf224/TpC/Group.hpp
+	<iostream>
+	<memory>
+	<string>
+	<list>
+	"Multimedia.hpp"
+
+1445497857 source:/cal/homes/jschoumacher/workspace/inf224/TpC/ClientServ/client.cpp
+	<iostream>
+	"Socket.h"
+
+1445512126 /cal/homes/jschoumacher/workspace/inf224/TpC/ClientServ/Socket.h
+	<string>
+	<sys/types.h>
+	<sys/socket.h>
+
+1445497728 source:/cal/homes/jschoumacher/workspace/inf224/TpC/ClientServ/server.cpp
+	<iostream>
+	<string>
+	"TCPServer.h"
+
+1445604857 /cal/homes/jschoumacher/workspace/inf224/TpC/ClientServ/TCPServer.h
+	<memory>
+	<pthread.h>
+	"Socket.h"
+
+1445504677 source:/cal/homes/jschoumacher/workspace/inf224/TpC/ClientServ/Socket.cpp
+	<iostream>
+	<cstring>
+	<cstdlib>
+	<unistd.h>
+	<fcntl.h>
+	<netdb.h>
+	<netinet/tcp.h>
+	<csignal>
+	"Socket.h"
+
+1445504909 source:/cal/homes/jschoumacher/workspace/inf224/TpC/ClientServ/TCPServer.cpp
+	<unistd.h>
+	<iostream>
+	"TCPServer.h"
+
+1453219711 source:/cal/homes/jschoumacher/workspace/inf224/TpC/Factory.cpp
+	"Factory.hpp"
+
+1453215717 /cal/homes/jschoumacher/workspace/inf224/TpC/Factory.hpp
+	<memory>
+	<map>
+	"Photo.hpp"
+	"Group.hpp"
+	"Film.hpp"
+
