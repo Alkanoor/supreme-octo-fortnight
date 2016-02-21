@@ -1,0 +1,108 @@
+Projet C++/Swing
+
+
+#################README#################
+
+Pour compiler les 2 programmes, tapez make dans le dossier actuel.
+Pour lancer le programme C++, tapez make run-C++.
+De même pour lancer la télécommande, tapez make run-swing.
+On pourra lancer les 2 en même temps avec make run.
+Pour tester l'interface entre les 2 programmes, vous pouvez essayer de faire toutes les opérations possibles :
+-Search : en indiquant Video1, Film1, Videos, Image1, Image2, Images dans le champ de recherche
+-Print : de même
+-Play : de même. Le serveur doit afficher la resource si celle-ci n'a pas été supprimée avec delete
+-Delete : de même
+(-Exit)
+
+########################################
+
+
+Réponses aux questions:
+
+
+4e Etape : photos et videos
+
+
+?Cependant, contrairement à la fonction d'affichage, son implémentation ne fait pas sens au niveau de la classe de base. Comment appelle-t'on ce type de méthode et comment faut-il les déclarer ?
+
+*On appelle ce type de méthode une méthode virtuelle abstraite, qu'on déclare avec son prototype classique précédée d'un virtual pour le polymorphisme et suivie d'un =0 pour le caractère abstrait de la méthode. En faisant ainsi, on ne peut plus instancier la classe mère (celle qui contient la méthode abstraite) directement (sans instancier une de ses classes filles).
+
+
+?Modifier le Makefile si nécessaire (on rappelle qu'il ne faut pas mettre les .h dans SOURCES). Compiler, corriger les éventuelles erreurs et tester le programme. Si vous avez fait correctement ce qui précède, il ne sera plus possible d'instancer des objets de la classe de base. Pourquoi ?
+
+*Le makefile a été légèrement modifié pour une utilisation personnelle (projet effectué avec codeblocks, donc pour garder uniquement l'essentiel, des fonctions ont été ajoutées dans le makefile, elles seront normalement inutilisables dans le projet rendu). On a évidemment ajouté les nouveaux fichiers .cpp dans la variable SOURCES. Pour la réponse à la deuxième partie de la question, cela a déjà été dit dans la réponse précdente.
+
+
+
+5e Etape : traitement générique
+
+
+?Quelle est la propriété caractéristique de l'orienté objet qui permet de faire cela ? Qu'est-il spécifiquement nécessaire de faire dans le cas du C++ ? Quel est le type des éléments du tableau : est-ce que ce tableau contient les objets ou des pointeurs vers ces objets ? Pourquoi ? Comparer à Java.
+
+*C'est le polymorphisme qui permet de faire cela, dans le cas du C++ on est obligé d'utiliser des pointeurs ou des références pour que le polymorphisme s'applique (vtables en C++). Le tableau contient donc des pointeurs vers les objets. Celui-ci est présent dans le main en commantaire (dans le fichier main.cpp) qui a servi à faire des tests de fuite de mémoire avec valgrind. En java, on manipule constamment des références vers des objets sans sans apercevoir : à part les types primitifs, tout n'est que référence. C'est pourquoi, les principes internes étant globalement identiques, le polymorphisme s'applique sans effort supplémentaire.
+
+
+
+6e Etape : films et tableaux
+
+
+?Que faut-il faire dans ce cas pour que l'objet puisse avoir plein contrôle sur ses données (ici, le tableau de durées du Film) ?
+
+*La solution retenue (et l'une des seules réalistes) est la copie des données de durées dans le constructeur de copie et dans l'opérateur d'affectation. De plus, concernant l'accesseur, on est obligé, pour garantir l'intégrité des données, de retourner un pointeur sur des int constants. Le pointeur peut éventuellement être constant (il l'est ici). Malheureusement, je crois qu'il est toujours possible de forcer le cast de const vers non const, rendant ce mécanisme non sûr à 100%, mais cela relève plus de la responsabilité du programmeur utilisant la classe Film.
+De nombreux tests ont été effectués et vérifiés avec Valgrind (voir le main commenté en dessous du "vrai" main).
+
+
+
+7e Etape :
+
+
+?Parmi les classes précédemment écrites quelles sont celles qu'il faut modifier et comment afin qu'il n'y ait pas de fuite mémoire quand on détruit leurs instances ? De même, la copie d'objets peut poser problème dans certains cas. Quelle(s) classe(s) sont concernées parmi celles déjà écrites et que faut-il faire ?
+
+*La classe Film est la seule concernée par des fuites mémoires éventuelles vu qu'on copie les données allouées dynamiquement de manière dynamique dans certaines méthodes de la classe. Il faut donc delete ces données dans le destructeur. Le problème de la copie d'objets a été évoqué précédemment vu qu'un constructeur de copie et que l'opérateur d'affectation ont été redéfinis. Le main testait cela très bien.
+
+
+
+8e Etape :
+
+
+?Le groupe ne doit pas détruire les objets quand il est détruit car un objet peut appartenir à plusieurs groupes. Considérant ce fait, la classe groupe doit-elle forcément avoir un destructeur ou ça dépend des cas ? Expliquez.
+
+*La classe groupe n'a pas besoin de disposer d'un destructeur. En effet, si un objet appartient à plusieurs groupes (ce qui est tout à fait possible), mettre en place un mécanisme de destruction intelligent est complexe et inutile si le programmeur fait attention à détruire les objets concernés après les dernières opérations engendrées depuis des instances de groupe (sinon on prend le risque de détruire un objet utilisé dans le groupe). Rien n'empêche toutefois de déclarer un destructeur quasiment vide pour le groupe.
+
+
+?On rappelle que la liste d'objets doit en fait être une liste de pointeurs d'objets. Pourquoi ? Comparer à Java.
+
+*La liste d'objets doit être une liste de pointeurs d'objets pour conserver le polymorphisme à l'intérieur de méthodes de la classe groupe. En java, comme il a déjà été évoqué précédemment, ce mécanisme est automatique vu que tout objet est une référence : il n'y a pas besoin de déclarer de surplus.
+
+
+
+11e Etape :
+
+
+?Si les noms des objets multimédia (par exemple le nom d'une vidéo) contiennent des espaces il faut utiliser une des formes de la fonction getline() au lieu de l'operateur >> (car cet opérateur s'arrète dès qu'il trouve un espace) et séparer les mots avec un caractère approprié (mais pas \n qui sert à séparer les messages !).
+
+*Done
+
+
+?Vous pouvez rajouter toute commande utile pour une télécommande (et servira pour l'interface graphique Java Swing du TP suivant). Par exemple il peut être intéressant d'obtenir la liste des objets d'un certain type ou appartenant à un certain groupe pour afficher cette liste sur la télécommande.
+
+*On peut déjà afficher des groupes, l'utilisateur pourra ainsi accéder aux groupes "images" ou "videos". Une commande ajoutée est la suppression d'un item (ça n'est pas très utile puisque si on supprime tous les items, on ne peut plus rien faire d'intéressant).
+
+
+?On peut utiliser une map avec des pointeurs de méthodes pour effectuer le lien entre le nom des commandes et les méthodes correspondantes afin d'avoir une plus grande flexibilité (on peut ainsi rajouter des commandes sans modifier la partie serveur) et une meilleure efficacité (la recherche de la commande est plus rapide s'il y en a beaucoup).
+
+*Vu le nombre de commandes (4) je n'ai pas pris la peine de déclarer une std::map<std::string,std::function<void(const std::string&)> > qui aurait pu être utilisée pour procéder chaque type de message.
+
+
+
+12e Etape : sérialisation/désérialisation
+
+
+Je n'ai pas fait de sérialisation "spéciale". A la base j'avais déjà pris en compte cet aspect pour afficher les objets facilement, du coup on peut utiliser un ofstream quelconque ofs et utiliser ofs<<(objet). C'est ce que je fais ici pour gérer la commande print. Je n'ai pas le temps d'implémenter une sérialisation à proprement parler et je n'en vois pas l'intérêt vu qu'il n'est d'aucune utilité ici de reconstruire les classes en bout de transmission (on veut juste afficher les données importantes).
+
+
+
+13e Etape : traitement des erreurs
+
+
+La couche de traitement d'erreurs ajoutée est superficielle, il s'agit juste de renvoyer des exceptions dans le cas où on crée plusieurs groupes ou objets avec le même nom ou dans le cas où on nomme un élément multimédia avec des caractères invalides (ASCII<32 ou ASCII>127). Voici pourquoi : la suppression d'un objet n'existant pas renvoie false (donc code d'erreur simple), et cela est également renvoyé sur le réseau. Concernant la taille du tableau de durées d'un Film, c'est difficile à gérer ici puisque le programmeur est sensé fournir le tableau des chapitres et la taille de ce tableau (un entier positif). Si le programmeur donne une taille improbable (plus grande que la taille du tableau des chapitres), le programme plantera, mais cela ne peut pas se prédire. Le programmeur fera donc attention. C'est le cas parce que je n'ai délibérément pas changé la classe Film avec un vector d'entiers pour les chapitres. En effet, il était demandé dans le TP de ne pas le faire au début, et ce n'est pas maintenant que je vais effacer ce qui a été fait précédemment et qui m'a couté un certain temps de vérification par rapport aux fuites de mémoires éventuelles.
