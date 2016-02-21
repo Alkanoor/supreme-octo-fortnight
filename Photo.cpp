@@ -25,7 +25,7 @@ std::ostream& Photo::print(std::ostream& oss) const
 
 void Photo::execute() const
 {
-    system(("display "+path+"/"+name+" &").c_str());
+    return (void)system(("display "+path+"/"+name+" &").c_str());
 }
 
 void Photo::setLattitude(float lattitude)

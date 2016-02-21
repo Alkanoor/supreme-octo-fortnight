@@ -56,10 +56,6 @@ Group<T>::~Group()
 }
 
 template <typename T>
-std::ostream& Group<T>::operator << (std::ostream& oss) const
-{return print(oss);}
-
-template <typename T>
 std::ostream& Group<T>::print(std::ostream& oss) const
 {
     oss<<"Group "<<name<<" :"<<std::endl;
