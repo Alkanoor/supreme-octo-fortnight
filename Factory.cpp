@@ -3,46 +3,60 @@
 
 std::shared_ptr<Multimedia> Factory::createFilm(const std::string& path, const std::string& name)
 {
+    throwIfBadName(name);
     auto tmp = std::shared_ptr<Film>(new Film(name,path,-1));
+    throwIfNameExistsInMultimedia(name);
     multimediaObjects[name] = tmp;
     return tmp;
 }
 
 std::shared_ptr<Multimedia> Factory::createVideo(const std::string& path, const std::string& name)
 {
+    throwIfBadName(name);
     auto tmp = std::shared_ptr<Video>(new Video(name,path,-1));
+    throwIfNameExistsInMultimedia(name);
     multimediaObjects[name] = tmp;
     return tmp;
 }
 
 std::shared_ptr<Multimedia> Factory::createPhoto(const std::string& path, const std::string& name)
 {
+    throwIfBadName(name);
     auto tmp = std::shared_ptr<Photo>(new Photo(name,path,-1,-1));
+    throwIfNameExistsInMultimedia(name);
     multimediaObjects[name] = tmp;
     return tmp;
 }
 
 std::shared_ptr<Multimedia> Factory::createGroup(const std::string& name)
 {
+    throwIfBadName(name);
     auto tmp = std::shared_ptr<Group<Multimedia> >(new Group<Multimedia>(name));
+    throwIfNameExistsInGroups(name);
     groupObjects[name] = tmp;
     return tmp;
 }
 
 std::shared_ptr<Multimedia> Factory::createGroup(const std::string& name, const std::list<std::shared_ptr<Multimedia> >& l)
 {
+    throwIfBadName(name);
     auto tmp = std::shared_ptr<Group<Multimedia> >(new Group<Multimedia>(name,l));
+    throwIfNameExistsInGroups(name);
     groupObjects[name] = tmp;
     return tmp;
 }
 
 void Factory::addMultimedia(const std::string& name, std::shared_ptr<Multimedia> multimedia)
 {
+    throwIfBadName(name);
+    throwIfNameExistsInMultimedia(name);
     multimediaObjects[name] = multimedia;
 }
 
 void Factory::addMultimediaGroup(const std::string& name, std::shared_ptr<Group<Multimedia> > multimedia)
 {
+    throwIfBadName(name);
+    throwIfNameExistsInGroups(name);
     groupObjects[name] = multimedia;
 }
 
@@ -102,4 +116,24 @@ std::ostream& Factory::print(std::ostream& oss) const
     for(auto it=groupObjects.begin();it!=groupObjects.end();it++)
         oss<<"Group object : "<<(*it->second)<<std::endl;
     return oss;
+}
+
+
+void Factory::throwIfBadName(const std::string& name)
+{
+    for(unsigned int i=0;i<name.size();i++)
+        if(name[i]<32||name[i]>127)
+            throw std::exception("Bad char in name");
+}
+
+void Factory::throwIfNameExistsInMultimedia(const std::string& name)
+{
+    if(multimediaObjects.count(name))
+        throw std::exception("Multimedia object existing");
+}
+
+void Factory::throwIfNameExistsInGroups(const std::string& name)
+{
+    if(groupObjects.count(name))
+        throw std::exception("Group existing");
 }

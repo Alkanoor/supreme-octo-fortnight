@@ -38,6 +38,13 @@ class Factory
         std::ostream& operator << (std::ostream& oss) const;
         std::ostream& print(std::ostream& oss) const;
 
+        ///Create exception in case of bad name (ascii<32 or ascii>127 for at least 1 char in the name)///
+        void throwIfBadName(const std::string& name);
+        ///Create exception in case of existing multimedia object///
+        void throwIfNameExistsInMultimedia(const std::string& name);
+        ///Create exception in case of existing group object///
+        void throwIfNameExistsInGroups(const std::string& name);
+
     private:
         std::map<std::string,std::shared_ptr<Multimedia> > multimediaObjects;
         std::map<std::string,std::shared_ptr<Group<Multimedia> > > groupObjects;

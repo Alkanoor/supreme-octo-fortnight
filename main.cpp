@@ -15,7 +15,23 @@ int main()
     tmpGroup = std::shared_ptr<Group<Multimedia> >(new Group<Multimedia>("Videos"));
     int chapters[4] = {5000,1300,2200,1700};
     tmp = std::shared_ptr<Multimedia>(new Film("film1.3gp","../data",chapters,4));
+    try
+    {
+        multimediaPool->addMultimedia("Film1\n\r",tmp); //should fail because of forbidden chars \r and \n
+    }
+    catch(std::exception& e)
+    {
+        std::cout<<"Test exception (should be printed if it works) : "<<e.what()<<std::endl;
+    }
     multimediaPool->addMultimedia("Film1",tmp);
+    try
+    {
+        multimediaPool->addMultimedia("Film1",tmp); //should fail because Film1 already exists in factory
+    }
+    catch(std::exception& e)
+    {
+        std::cout<<"Test exception (should be printed if it works) : "<<e.what()<<std::endl;
+    }
     tmpGroup->push_back(tmp);
     tmp = std::shared_ptr<Multimedia>(new Video("video1.3gp","../data",1200));
     multimediaPool->addMultimedia("Video1",tmp);
